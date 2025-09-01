@@ -9,19 +9,19 @@ const Services: React.FC = () => {
     {
       icon: Code,
       title: 'Web Development',
-      description: 'Custom web applications built with cutting-edge technologies and modern frameworks.',
+      description: 'Custom web applications & websites built with cutting-edge technologies and modern frameworks.',
       color: 'cyan'
     },
     {
       icon: Palette,
       title: 'UI/UX Design',
-      description: 'Intuitive interfaces that captivate users and drive engagement through thoughtful design.',
+      description: 'User-friendly, conversion-focused interfaces that captivate users and drive engagement through thoughtful design.',
       color: 'purple'
     },
     {
       icon: Rocket,
       title: 'Digital Marketing',
-      description: 'Comprehensive digital marketing strategies that accelerate business growth.',
+      description: 'Comprehensive, Data-driven digital marketing strategies to boost visibility, leads, and sales.',
       color: 'pink'
     },
     {
@@ -68,7 +68,7 @@ const Services: React.FC = () => {
               </span>
             </h2>
             <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto">
-              We deliver exceptional digital solutions that push the boundaries of what's possible ensuring your business is ready for tomorrow's challenges.
+              We deliver exceptional, end-to-end digital solutions that push the boundaries of what's possible ensuring your business is ready for tomorrow's challenges.
             </p>
           </div>
 
@@ -94,7 +94,7 @@ const Services: React.FC = () => {
             ))}
           </div>
           <button className="w-full text-2xl justify-center m-12 sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-white font-semibold hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105 glow-button">
-              Ready to Transform Your Business? Let's Talk Solutions.
+              <a href='https://wa.me/917652090512'>Ready to Transform Your Business? Let's Talk Solutions.</a>
           </button>
         </div>
       </div>

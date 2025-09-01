@@ -9,37 +9,37 @@ const WhyChooseUs: React.FC = () => {
     {
       icon: Target,
       title: 'Results-Driven Approach',
-      description: 'We focus on measurable outcomes that directly impact your business growth and success.',
+      description: 'Solutions that deliver measurable ROI.',
       color: 'cyan'
     },
     {
       icon: Lightbulb,
       title: 'Innovation First',
-      description: 'Cutting-edge solutions using the latest technologies and industry best practices.',
+      description: 'Leveraging AI, ML, Cloud, and emerging tech.',
       color: 'purple'
     },
     {
       icon: Users,
       title: 'Expert Team',
-      description: 'Seasoned professionals with deep expertise across multiple domains and technologies.',
+      description: 'Skilled professionals across web, SaaS, and digital strategy.',
       color: 'pink'
     },
     {
       icon: Zap,
       title: 'Rapid Delivery',
-      description: 'Agile development processes that ensure fast turnaround without compromising quality.',
+      description: 'Agile development ensures faster go-to-market.',
       color: 'cyan'
     },
     {
       icon: Shield,
       title: 'Reliable Support',
-      description: '24/7 support and maintenance to keep your digital assets running smoothly.',
+      description: '24/7 support and maintenance.',
       color: 'purple'
     },
     {
       icon: Trophy,
       title: 'Proven Success',
-      description: 'Track record of delivering exceptional results for clients across various industries.',
+      description: 'Track record of client satisfaction across industries.',
       color: 'pink'
     }
   ];
@@ -70,7 +70,7 @@ const WhyChooseUs: React.FC = () => {
               </span>
             </h2>
             <p className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto">
-              We combine technical excellence with creative vision to deliver solutions that exceed expectations
+             We don&apos;t just build digital products—we build growth engines for your business.
             </p>
           </div>
 

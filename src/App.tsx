@@ -7,6 +7,7 @@ import WhyChooseUs from './components/WhyChooseUs';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Clients from './components/Clients';
 import ParticleBackground from './components/ParticleBackground';
 
 function App() {
@@ -15,9 +16,10 @@ function App() {
       <ParticleBackground />
       <Header />
       <Hero />
-      <Services />
-      <About />
       <WhyChooseUs />
+      <Services />
+      <Clients />
+      <About />
       <Portfolio />
       <Contact />
       <Footer />

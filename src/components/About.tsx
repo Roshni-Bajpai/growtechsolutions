@@ -29,8 +29,8 @@ const About: React.FC = () => {
               </h2>
               
               <p className="text-lg sm:text-xl text-white/80 leading-relaxed">
-                Founded in August 2025 by Roshni Bajpai and Rahul Yadav, GrowTech Solutions 
-                is dedicated to empowering businesses through cutting-edge digital transformation. 
+                Founded in 2025 by Roshni Bajpai and Rahul Yadav, GrowTech Solutions 
+                is dedicated full-stack digital development agency empowering businesses through cutting-edge technology, SaaS innovation, and data-driven marketing.
                 We specialize in creating innovative solutions that drive sustainable growth.
                 We are not just a service provider; we are your dedicated digital partner, working as an extension of your business to ensure your long-term success.
               </p>
@@ -70,14 +70,14 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="mt-12 sm:mt-16 text-center px-4">
+      {/* <div className="mt-12 sm:mt-16 text-center px-4">
             <div className="inline-flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 p-4 sm:p-6 rounded-2xl bg-gradient-to-r from-purple-600/20 to-cyan-600/20 border border-purple-500/30">
               <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-400 mb-1 sm:mb-2">Founded August 2025</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-cyan-400 mb-1 sm:mb-2">Founded in 2025</div>
                 <div className="text-sm sm:text-base text-white/70">By Roshni Bajpai & Rahul Yadav</div>
               </div>
             </div>
-          </div>
+          </div> */}
     </section>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -8,6 +9,12 @@ const Contact: React.FC = () => {
     name: '',
     email: '',
     subject: '',
+    message: ''
+  });
+  
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({
+    type: null,
     message: ''
   });
 
@@ -18,9 +25,44 @@ const Contact: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsLoading(true);
+    setStatus({ type: null, message: '' });
+
+    try {
+      // EmailJS configuration
+      const serviceId = 'service_zoypuq4'; // Replace with your EmailJS service ID
+      const templateId = 'template_7obbhjg'; // Replace with your EmailJS template ID
+      const publicKey = '-MBTVjDh6sOp1Funl'; // Replace with your EmailJS public key
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'connect@growtechsolutions.com', // Your email
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      setStatus({
+        type: 'success',
+        message: 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.'
+      });
+      
+      // Reset form
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+    } catch (error) {
+      console.error('Email send error:', error);
+      setStatus({
+        type: 'error',
+        message: 'Sorry, there was an error sending your message. Please try again or contact us directly.'
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -94,6 +136,21 @@ const Contact: React.FC = () => {
             </div>
 
             <div className={`${isVisible ? 'animate-slide-right' : ''}`}>
+              {/* Status Messages */}
+              {status.type && (
+                <div className={`mb-6 p-4 rounded-lg flex items-center space-x-3 ${
+                  status.type === 'success' 
+                    ? 'bg-green-900/20 border border-green-500/30 text-green-400' 
+                    : 'bg-red-900/20 border border-red-500/30 text-red-400'
+                }`}>
+                  {status.type === 'success' ? 
+                    <CheckCircle size={20} /> : 
+                    <AlertCircle size={20} />
+                  }
+                  <p className="text-sm">{status.message}</p>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
@@ -103,7 +160,8 @@ const Contact: React.FC = () => {
                       placeholder="Your Name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-purple-500/30 text-white placeholder-white/50 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
+                      disabled={isLoading}
+                      className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-purple-500/30 text-white placeholder-white/50 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 disabled:opacity-50"
                       required
                     />
                   </div>
@@ -114,7 +172,8 @@ const Contact: React.FC = () => {
                       placeholder="Your Email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-purple-500/30 text-white placeholder-white/50 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
+                      disabled={isLoading}
+                      className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-purple-500/30 text-white placeholder-white/50 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 disabled:opacity-50"
                       required
                     />
                   </div>
@@ -127,7 +186,8 @@ const Contact: React.FC = () => {
                     placeholder="Subject"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-purple-500/30 text-white placeholder-white/50 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
+                    disabled={isLoading}
+                    className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-purple-500/30 text-white placeholder-white/50 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 disabled:opacity-50"
                     required
                   />
                 </div>
@@ -138,18 +198,29 @@ const Contact: React.FC = () => {
                     placeholder="Your Message"
                     value={formData.message}
                     onChange={handleInputChange}
+                    disabled={isLoading}
                     rows={6}
-                    className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-purple-500/30 text-white placeholder-white/50 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 resize-none"
+                    className="w-full p-3 sm:p-4 rounded-lg bg-white/5 border border-purple-500/30 text-white placeholder-white/50 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 resize-none disabled:opacity-50"
                     required
                   ></textarea>
                 </div>
                 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg text-white font-semibold hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105 glow-button"
+                  disabled={isLoading}
+                  className="w-full flex items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg text-white font-semibold hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105 glow-button disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
-                  <Send size={18} />
-                  <span>Send Message</span>
+                  {isLoading ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
               </form>
             </div>
