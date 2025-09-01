@@ -28,7 +28,7 @@ const Header: React.FC = () => {
           </div> */}
           <div className="text-xl sm:text-2xl font-bold">
             <img
-              src="images/logo.png"
+              src="/images/logo.png"
               alt="GrowTech Solutions Logo"
               className="h-26 w-62 sm:h-40" // adjust height as needed
             />
