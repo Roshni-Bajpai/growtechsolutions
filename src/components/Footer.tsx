@@ -1,5 +1,5 @@
 import React from 'react';
-import { Twitter, Mail, Send, Facebook, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Send, Facebook, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const socialLinks = [

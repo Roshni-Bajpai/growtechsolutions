@@ -1,21 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { Building2, Users, Globe, Award, TrendingUp, Heart, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Building2, Users, Award, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface Client {
-  id: number;
-  name: string;
-  logo: string;
-  category: string;
-  industry: string;
-  website: string;
-}
 
-interface Stat {
-  number: string;
-  label: string;
-  icon: React.ComponentType<{ size: number }>;
-}
 
 const Clientele: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation();
